@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../../layout/header/Header'
 import Footer from '../../layout/footer/Footer'
 import { Container, Form, Button, Alert } from 'react-bootstrap';
+import axios from '../../api/axios';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
-    const [firstName, setFirstName] = React.useState('');
-    const [lastName, setLastName] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [error, setError] = React.useState('');
-
-    const handleSubmit = (event) => {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const handleSubmit = async (event) => {
         setError('');
         event.preventDefault();
 
@@ -41,8 +43,30 @@ const SignIn = () => {
         }
 
         setError('');
-        // Handle sign-in logic here
-        console.log('Signing in with:', { firstName, lastName, email, password });
+        try {
+            const response = await axios.post('/auth/register', {
+                firstName,
+                lastName,
+                email,
+                username: firstName,
+                password,
+                roles: ['user']
+            });
+            if (response.status === 201) {
+                // Handle successful registration (e.g., redirect to login page)
+                alert('Registration successful! Please check your email to verify your account.');
+                navigate('/login');
+                // Redirect to login page or another appropriate page
+            } else {
+                setError('Registration failed. Please try again.');
+            }
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                setError(error.response.data.message);
+            } else {
+                setError('Registration failed. Please try again.');
+            }
+        }
     };
 
     return (
