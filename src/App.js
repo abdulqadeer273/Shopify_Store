@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import unProtectedRoutes from './routers/unProtected';
 import Whatsapp from './components/Whatsapp/Whatsapp';
 import admin from './routers/admin';
-
+import protectedRoutes from './routers/protected';
+import RequiredAuth from './store/RequiredAuth'
 function App() {
   return (
     <>
@@ -13,8 +14,11 @@ function App() {
             {unProtectedRoutes?.map((elem, index) => <Route path={elem?.path} element={elem?.element} key={index} />)}
             {admin?.map((elem, index) => <Route path={elem?.path} element={elem?.element} key={index} />)}
           </Route>
+          <Route element={<RequiredAuth />} >
+            {protectedRoutes?.map((elem, index) => <Route path={elem?.path} element={elem?.element} key={index} />)}
+          </Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter >
       <Whatsapp />
     </>
   );

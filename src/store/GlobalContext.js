@@ -2,8 +2,10 @@ import { createContext } from "react";
 
 const values = {
   state: {
-    showDiv: false,
-    showCartDiv:false
+    auth: {
+      token: localStorage.getItem("token"),
+      user: JSON.parse(localStorage.getItem("user")),
+    },
   },
   dispatch: (action) => {},
 };

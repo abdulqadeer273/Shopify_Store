@@ -1,9 +1,8 @@
 import React from "react";
 import { Container, Row, Col, Table, Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaBox, FaShoppingCart, FaUsers, FaChartBar, FaHome, FaTag, FaImage, FaClipboardCheck, FaPercentage, FaCog } from "react-icons/fa";
+import { FaShoppingCart, FaUsers, FaChartBar, FaHome, FaImage, FaCog } from "react-icons/fa";
 import { MdAdsClick } from "react-icons/md";
-import { TbFlagDiscount } from "react-icons/tb";
 import { RiDiscountPercentFill } from "react-icons/ri";
 import { IoMdPricetag } from "react-icons/io";
 

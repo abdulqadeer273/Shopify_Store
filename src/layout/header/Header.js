@@ -29,7 +29,7 @@ const Header = () => {
                         </Nav>
                         <Nav>
                             <Nav.Link to="#search">🔍</Nav.Link>
-                            <Nav.Link to="#user">👤</Nav.Link>
+                            <Nav.Link onClick={()=>navigate('/account')}>👤</Nav.Link>
                             <Nav.Link to="#cart">🛒</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
