@@ -128,13 +128,13 @@ const Home = () => {
                                     </div>
                                     <Card.Body>
                                         <Card.Text>{product.name}</Card.Text>
-                                        <Card.Text>
+                                        <div>
                                             <span>★★★★☆ ({product.reviews})</span>
                                             <div className='d-flex'>
                                                 <span className='me-3' style={{ textDecoration: 'line-through' }}>Rs. {product.originalPrice} PKR</span>
                                                 <span style={{ fontWeight: 'bold' }}>Rs. {product.price} PKR</span>
                                             </div>
-                                        </Card.Text>
+                                        </div>
                                     </Card.Body>
                                 </Card>
                             </div>
